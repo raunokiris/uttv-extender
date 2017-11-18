@@ -23,6 +23,13 @@ Available at  https://chrome.google.com/webstore/detail/uttv-extender/kagfmcikip
 - load timestamp: l or c  
 
 
+## Screenshots
+### New buttons
+![new_buttons](example_screenshots/uttv_main.png)
+
+### Theater mode
+![theater_mode](example_screenshots/uttv_theater.png)
+
 ## Change log  
 ### 0.0.7  
 - stylized buttons  
