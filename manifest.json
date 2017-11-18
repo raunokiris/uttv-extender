@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "short_name": "uttvex",
+  "version": "0.0.8",
+  "default_locale": "en",
+  "description": "__MSG_extensionDescription__",
+  
+  "options_ui": {
+    "page": "options/options.html",
+	"chrome_style": true
+  },
+  
+  "icons": { 
+    "16": "ico/icon16.png",
+    "48": "ico/icon48.png",
+    "128": "ico/icon128.png"
+  },
+  
+  "content_scripts": [ {
+    "matches": ["*://www.uttv.ee/naita?id=*"],
+    "js": ["js/content.js"],
+    "css": ["css/general.css"]
+  } ],
+  
+  "permissions": ["storage"]
+}

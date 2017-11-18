@@ -1,0 +1,86 @@
+{
+  "extensionName": {
+    "message": "uttv laiendaja"
+  },
+  
+  "extensionDescription": {
+    "message": "Laiendus, mis lisab uttv.ee videopleierile täiendavad nupud ja klaviatuuri otseteede toe."
+  },
+  
+  "pbrate100": {
+    "message": "Sea video esituskiiruseks 1.0 (klaviatuuri otsetee: kiiruse muutmiseks ↑/↓)"
+  },
+  
+  "pbrate125": {
+    "message": "Sea video esituskiiruseks 1.25x (klaviatuuri otsetee: kiiruse muutmiseks ↑/↓)"
+  },
+  
+  "pbrate150": {
+    "message": "Sea video esituskiiruseks 1.50x (klaviatuuri otsetee: kiiruse muutmiseks ↑/↓)"
+  },
+  
+  "pbrate175": {
+    "message": "Sea video esituskiiruseks 1.75x (klaviatuuri otsetee: kiiruse muutmiseks ↑/↓)"
+  },
+  
+  
+  "play": {
+    "message": "Esita/peata video (klaviatuuri otsetee: tühik)"
+  },
+
+  
+  "time_rew300": {
+    "message": "Liigu tagasi 5 min (klaviatuuri otsetee: Shift + ←)"
+  },
+  
+  "time_rew60": {
+    "message": "Liigu tagasi 60 s (klaviatuuri otsetee: Ctrl + ←)"
+  },
+  
+  "time_rew10": {
+    "message": "Liigu tagasi 10 s (klaviatuuri otsetee: ←)"
+  },
+  
+  "time_fwd10": {
+    "message": "Liigu edasi 10 s (klaviatuuri otsetee: →)"
+  },
+  
+  "time_fwd60": {
+    "message": "Liigu edasi 60 s (klaviatuuri otsetee: Ctrl + →)"
+  },
+  
+  "time_fwd300": {
+    "message": "Liigu edasi 5 min (klaviatuuri otsetee: Shift + →)"
+  },
+  
+  
+  "ts_save": {
+    "message": "Salvesta asukoht videos, võimaldamaks hiljem samast kohast vaatamise jätkamist"
+  },
+  
+  "ts_load": {
+    "message": "Jätka video vaatamist salvestatud kohast"
+  },
+
+
+  "theater": {
+    "message": "Lülita 'Theater mode' sisse/välja (klaviatuuri otsetee: T)"
+  },
+
+  "optionDisplayButtonbar": {
+    "message": "Kuva nupud: nupud kuvatakse video all; klaviatuuri otseteed töötavad valikust sõltumata."
+  },
+
+  "optionAutohideButtonbar": {
+    "message": "Peida nupud automaatselt: nupud kuvatakse vaid juhul, kui kursor on video lähedal."
+  },
+
+  "optionSave": {
+    "message": "Salvesta"
+  },
+
+  "optionSaveSuccess": {
+    "message": "Valikud salvestatud!"
+  }
+
+}

@@ -1,0 +1,111 @@
+/* BUTTONBAR */
+/* Buttonbar layout */
+#buttonbar {
+    width:100%;
+    text-align:center;
+	margin-top: 5px;
+    visibility: hidden;
+}
+
+#btns-pbrate {
+    float:left;
+	margin-top: 2px;
+}
+
+#btns-time {
+    display: inline-block;
+    margin:0 auto;
+	margin-top: 2px;
+}
+
+#btns-ts {
+    float:right;
+	margin-top: 2px;
+}
+
+#btn-play {
+	width: 30px;
+}
+
+/* Buttonbar font corrections */
+#btns-time > *:not(#btn-play) {
+	letter-spacing: -2px;
+}
+
+[id^="btn"] {
+	font-size: 0.9em !important;
+}
+
+#btn-ts-save, #btn-ts-load {
+    font-size: 1.6em !important;
+}
+
+#btn-theater {
+    font-size: 1.4em !important;
+}
+
+/* THEATER MODE */
+/* Strech out video element */
+.theater {
+    float: none;
+	width: 100%;
+	min-width: 100%;
+	left:0;
+}
+
+/* Add parent margins, otherwise elements might be end out outside of parent div range */
+.span4.theater {
+	margin: auto !important;
+}
+
+/* Layout for theater mode divs, left side */
+.span4.theater .aside-search, 
+.span4.theater .timeline,  
+.span4.theater .nav-list {
+	float: left;
+	clear: left;
+	min-width: 270px;
+	margin-right: 20px;
+	width: inherit;
+}
+
+/* Layout for theater mode divs, right side */
+.span4.theater .sidebar-nav {
+	overflow: hidden;
+	min-width: 350px;
+}
+
+/* If timeline is present, add space below it; otherwise "Search" is shown too close */
+.span4.theater .timeline {
+	margin-bottom: 20px;
+}
+
+/* Make minor correctins to uttv.ee default buttons styling */
+button:focus {  /* Remove active button blue outline and darker background: it should look the same as default button*/
+    outline: 0 !important;
+    background-position: 0 !important;
+    background-color: inherit !important;
+}
+
+button {  /* Make buttons smaller */
+	padding: 2px 8px 2px 8px !important;
+}
+
+button[disabled] {  /* Otherwise will interrupt parent div mouseover/mouseout.*/
+	pointer-events: none;
+}
+
+button.stayActive {
+    background-image: -webkit-linear-gradient(top, #ffffff, #d9d9d9) !important;
+    background-position: 0 !important;
+}
+
+.fader {
+    -webkit-transition: background 0.2s;
+    opacity: 1;
+}
+
+.fader.fadedOut{
+    -webkit-transition: opacity 0.3s linear;
+    opacity: 0;
+}

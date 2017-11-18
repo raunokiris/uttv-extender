@@ -1,0 +1,87 @@
+{
+  "extensionName": {
+    "message": "uttv extender"
+  },
+  
+  "extensionDescription": {
+    "message": "An extension to add new buttons and keyboard shortcuts to uttv.ee video player."
+  },
+
+  "pbrate100": {
+    "message": "Set playback rate to default 1x (keyboard shortcut: change speed using ↑/↓)"
+  },
+  
+  "pbrate125": {
+    "message": "Set playback rate to 1.25x (keyboard shortcut: change speed using ↑/↓)"
+  },
+  
+  "pbrate150": {
+    "message": "Set playback rate to 1.50x (keyboard shortcut: change speed using ↑/↓)"
+  },
+  
+  "pbrate175": {
+    "message": "Set playback rate to 1.75x (keyboard shortcut: change speed using ↑/↓)"
+  },
+
+  
+  "play": {
+    "message": "Play/Pause (keyboard shortcut: spacebar)"
+  },
+
+  
+  "time_rew300": {
+    "message": "Rewind 5 min (keyboard shortcut: Shift + ←)"
+  },
+  
+  "time_rew60": {
+    "message": "Rewind 60 sec (keyboard shortcut: Ctrl + ←)"
+  },
+  
+  "time_rew10": {
+    "message": "Rewind 10 sec (keyboard shortcut: ←)"
+  },
+  
+  "time_fwd10": {
+    "message": "Forward 10 sec (keyboard shortcut: →)"
+  },
+  
+  "time_fwd60": {
+    "message": "Forward 60 sec (keyboard shortcut: Ctrl + →)"
+  },
+  
+  "time_fwd300": {
+    "message": "Forward 5 min (keyboard shortcut: Shift + →)"
+  },
+  
+
+  "ts_save": {
+    "message": "Save timestamp; use 'Load timestamp' to continue video playback from the saved position"
+  },
+  
+  "ts_load": {
+    "message": "Load timestamp: continue video playback from the saved timestamp"
+  },
+
+
+  "theater": {
+    "message": "Toggle theater mode (keyboard shortcut: T)"
+  },
+
+
+  "optionDisplayButtonbar": {
+    "message": "Display buttons: buttons are shown below the video; keyboard shortcuts continue to work either way."
+  },
+
+  "optionAutohideButtonbar": {
+    "message": "Auto-hide buttons: buttons will automatically hidden when mouse cursor is not near the video."
+  },
+
+  "optionSave": {
+    "message": "Save"
+  },
+
+  "optionSaveSuccess": {
+    "message": "Options saved successfully"
+  }
+
+}
