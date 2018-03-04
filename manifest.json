@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "short_name": "uttvex",
-  "version": "0.0.8",
+  "version": "0.0.11",
   "default_locale": "en",
   "description": "__MSG_extensionDescription__",
   
@@ -17,11 +17,23 @@
     "128": "ico/icon128.png"
   },
   
-  "content_scripts": [ {
-    "matches": ["*://www.uttv.ee/naita?id=*"],
-    "js": ["js/content.js"],
-    "css": ["css/general.css"]
-  } ],
+  "content_scripts": [ 
+    {
+      "matches": ["*://www.uttv.ee/naita?id=*", "*://panopto.ut.ee/Panopto/Content/Sessions/*", "*://www.uttv.ee/embed?id=*", "*://h5p.org/h5p/embed/*"],
+      "js": ["js/content.js"],
+      "css": ["css/general.css"],
+      "all_frames": true
+    },
+    {
+      "matches": ["*://panopto.ut.ee/Panopto/Pages/Viewer.aspx*"],
+      "js": ["js/panopto_handler.js"]
+    },
+    {
+      "all_frames": true,
+      "matches": ["*://moodle.ut.ee/mod/page/view.php?id=*", "*://h5p.org/*"],
+      "js": ["js/moodle_handler.js"]
+    }
+  ],
   
   "permissions": ["storage"]
 }

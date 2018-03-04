@@ -1,27 +1,32 @@
 # uttv extender - Chrome extension
 
 ## Description
-Extension adds new buttons and support for keyboard shortcuts to the uttv.ee video player.  
+Extension improves uttv.ee video player keyboard shortcut support and adds keyboard shortcuts to moodle.ut.ee videos. The extension also makes it easier to download videos from uttv, moodle and panopto for offline use (keyboard shortcut: 'd').
+
+Previous versions of the extension also added new buttons to the uttv.ee video player. After the introduction of the new uttv video player (videojs) in December 2017, this functionality became obsolete, as luckily the new player implemented most of the features added by the extension. 
+
 Available at  https://chrome.google.com/webstore/detail/uttv-extender/kagfmcikipgjelpkepfogjgfneoehimh  
 
-## New buttons  
+## Keyboard shortcuts  
+Keyboard shortcuts added by the extension:
+- change speed (playback rate): up/down arrow keys
+- fast forward/backward: Shift + Left/Right arrow key (5min), Ctrl + Left/Right (60sec), Left/Right (10sec)
+- jump to X%: number keys 1-9 (e.g. key 5 jumps to 50% of the video)
+- play/pause: spacebar or single-click on video
+- full screen: f or double-click on video 
+- theater mode (uttv): t
+- change volume: +/-
+- mute: m
+- save timestamp: s
+- load timestamp: l or c
+- download video: d
+- embed video: e
+
+## New buttons   (temporarily disabled)
 - change video playback speed (1, 1.25, 1.5, 1.75)  
 - fast forward/backward (10s, 60s, 5min)  
 - save and load timestamp (enables the user to save a location in the video and return to it later, i.e. when returning to watch the video on another day)  
 - theater mode (makes video player larger)  
-
-## Keyboard shortcuts  
-- change speed: up/down arrow keys  
-- fast forward/backward: Shift + Left/Right arrow (5min), Ctrl + Left/Right (60sec), Left/Right (10sec)  
-- jump to X: number keys 1-9 (e.g. key 5 jumps to 50% of the video)  
-- play/pause: spacebar or single-click on video  
-- full screen: f or double-click on video  
-- theater mode: t  
-- change volume: +/-  
-- mute: m  
-- save timestamp: s  
-- load timestamp: l or c  
-
 
 ## Screenshots
 ### New buttons
@@ -31,6 +36,15 @@ Available at  https://chrome.google.com/webstore/detail/uttv-extender/kagfmcikip
 ![theater_mode](example_screenshots/uttv_theater.png)
 
 ## Change log  
+### 0.0.11  
+- Add keyboard shortcuts to moodle.ut.ee videos (uttv/h5p).
+
+### 0.0.10  
+- Allows downloading (keyboard shortcut: d) and opening embedded view (keyboard shortcut: e) for some moodle and panopto videos.
+
+### 0.0.9 (29 December 2017)  
+- Add partial support (keyboard shortcuts) to new UTTV video player (videojs)
+
 ### 0.0.7  
 - stylized buttons  
 - autohide buttons when mouse is not on video  
