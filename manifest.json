@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "short_name": "uttvex",
-  "version": "0.0.11",
+  "version": "0.0.13",
   "default_locale": "en",
   "description": "__MSG_extensionDescription__",
   
@@ -29,11 +29,11 @@
       "js": ["js/panopto_handler.js"]
     },
     {
-      "all_frames": true,
+      "run_at": "document_end",
       "matches": ["*://moodle.ut.ee/mod/page/view.php?id=*", "*://h5p.org/*"],
       "js": ["js/moodle_handler.js"]
     }
   ],
-  
-  "permissions": ["storage"]
+
+"permissions": ["storage"]
 }

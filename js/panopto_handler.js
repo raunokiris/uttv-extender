@@ -5,7 +5,8 @@ const videoUrl = document.querySelector("meta[property='og:video']").getAttribut
 
 function doc_keyUp(e) {
     // Get keycodes from: http://keycode.info/
-    if (e.target !== document.getElementById("searchInput") && !e.metaKey) {
+    let targetElement = e.target.tagName.toLocaleLowerCase();
+    if (targetElement !== "input" && targetElement !== "textarea" && !e.metaKey) {
     // Capture key presses only if they're made outside of search box (in that case user wants to input text)
     // AND when metaKey (Windows key; cmd-key) is not pressed (in that case user probably wants to use a global hotkey).
         if (e.which === 69) {                  // e @ embed

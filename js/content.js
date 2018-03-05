@@ -4,14 +4,11 @@ let tempVideoId = currentHref.substring(currentHref.lastIndexOf('/') + 1).split(
 const videoId = tempVideoId.includes("=") ? tempVideoId.split('=')[1] : tempVideoId;
 
 
-// LOAD DEFAULTS
-loadUserSettings();  // Set buttonbar visibility and autohide settings
-setTimestampLoadButtonInitialState();  // Load default status (disabled || enabled) of 'Load Timestamp'
-
 // Disable default actions of space and arrow keys unless the search box is active
 // (otherwise they interfere with keyboard shortcuts)
 window.addEventListener("keydown", function(e) {
-    if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1 && e.target !== document.getElementById("search_input")) {
+    let targetElement = e.target.tagName.toLocaleLowerCase();
+    if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1 && targetElement !== "input" && targetElement !== "textarea") {
         e.preventDefault();
     }
 });
@@ -21,38 +18,9 @@ document.addEventListener('keyup', doc_keyUp, false);
 
 // Video events
 video.addEventListener('dblclick', videoToggleFullscreen);
-// video.addEventListener('click', videoPlayPause);
-
-
-// GENERAL FUNCTIONS
-function localize(message) {
-    return chrome.i18n.getMessage(message);
+if (currentHref.includes("h5p.org/h5p/embed")) {
+    video.addEventListener('click', videoPlayPause);
 }
-
-function loadUserSettings() {
-    chrome.storage.sync.get({
-        displayButtonbar: true,
-        autohideButtonbar: true
-    }, function(items) {
-        if (items.displayButtonbar) {
-            document.getElementById('buttonbar').style.display = 'block';
-            if (items.autohideButtonbar) {
-                // If both displayButtonbar AND autohideButtonbar are selected, then add the class fader (see css)
-                // and change the default visibility = hidden  to visibile when mouseover spank8.
-                document.getElementById('buttonbar').classList.add('fader');
-                document.getElementsByClassName('span8')[0].addEventListener('mouseover', function () {
-                    document.getElementById('buttonbar').style.visibility = 'visible';
-                });
-            } else {
-                // If displayButtonbar is selected without autohide, then we can automatically set buttonbar visibile.
-                document.getElementById('buttonbar').style.visibility = 'visible';
-            }
-        } else {
-            document.getElementById('buttonbar').style.display = 'none'
-        }
-    });
-}
-
 
 // VIDEO FUNCTIONS
 function videoSetPartialTime(keycode) {
@@ -69,10 +37,9 @@ function videoPlayPause() {
     video.paused ? video.play() : video.pause();
 }
 
-function videoSetPlaybackRate(value) {
-    video.playbackRate = value;
-    // checkPlaybackRateAndChangeButtonBackground();
-}
+// function videoSetPlaybackRate(value) {
+//     video.playbackRate = value;
+// }
 
 function videoIncrementPlaybackRate(value) {
     let new_playbackRate = video.playbackRate + value;
@@ -83,7 +50,6 @@ function videoIncrementPlaybackRate(value) {
     } else {
         video.playbackRate = new_playbackRate;
     }
-    // checkPlaybackRateAndChangeButtonBackground();
 }
 
 function videoIncrementVolume(value) {
@@ -118,33 +84,21 @@ function videoToggleMute() {
 
 function videoToggleFullscreen() {
     // Uses Fullscreen API, see https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
-    // If fullscreenElement is found, the video is fullscreen => exit full screen
-    if (document.fullscreenElement || document.webkitFullscreenElement || document.webkitFullscreenElement) {
-        if (document.fullscreenElement) {  // Standard
-            document.exitFullscreen();
-        } else if (document.mozFullScreenElement) {  // Gecko (Firefox)
-            document.mozCancelFullScreen();
-        } else if (document.webkitFullscreenElement) {  // Blink (Chrome & Opera) + Edge + Safari
+    if (document.webkitFullscreenElement) {
             document.webkitExitFullscreen();
-        }
-    // otherwise the video should be opened in fullscreen
     } else {
-        if (video.requestFullscreen) {
-            video.requestFullscreen();
-        } else if (video.mozRequestFullScreen) {
-            video.mozRequestFullScreen();
-        } else if (video.webkitRequestFullscreen) {
             video.webkitRequestFullscreen();
-        }
     }
 }
 
 function videoToggletheaterMode() {
     // Adds or removes class="theater"; see '.theater' css-rules in /css/general.css
-    document.getElementsByClassName('span4')[0].classList.toggle('theater');
-    document.getElementsByClassName('span8')[0].classList.toggle('theater');
-    document.getElementsByClassName('span12')[0].classList.toggle('theater');
-    video.classList.toggle('theater');
+    if (currentHref.includes("www.uttv.ee/naita?id=")) {
+        document.getElementsByClassName('span4')[0].classList.toggle('theater');
+        document.getElementsByClassName('span8')[0].classList.toggle('theater');
+        document.getElementsByClassName('span12')[0].classList.toggle('theater');
+        video.classList.toggle('theater');
+    }
 }
 
 function downloadVideo() {
@@ -175,7 +129,8 @@ function downloadFile(url) {
 
 function doc_keyUp(e) {
     // Get keycodes from: http://keycode.info/
-    if (e.target !== document.getElementById("search_input") && !e.metaKey) {
+    let targetElement = e.target.tagName.toLocaleLowerCase();
+    if (targetElement !== "input" && targetElement !== "textarea" && !e.metaKey) {
     // Capture key presses only if they're made outside of search box (in that case user wants to input text)
     // AND when metaKey (Windows key; cmd-key) is not pressed (in that case user probably wants to use a global hotkey).
         if (e.shiftKey && e.which === 39) {                  // Shift + ->: Long forward
@@ -206,7 +161,7 @@ function doc_keyUp(e) {
             videoToggleMute();
         } else if (e.which === 70) {                        // f: Toggle fullscreen
             videoToggleFullscreen();
-        } else if (e.which === 84) {                        // t: Toggle theater mode
+        } else if (e.which === 84) {                        // t: Toggle theater mode (uttv)
             videoToggletheaterMode();
         } else if (e.which === 83) {                        // s: Save timestamp
             videoSaveTimestamp();
@@ -218,10 +173,4 @@ function doc_keyUp(e) {
             embedVideo();
         }
     }
-}
-
-function setTimestampLoadButtonInitialState() {
-    chrome.storage.local.get(videoId, function (result) {
-        document.getElementById("btn-ts-load").disabled = (result[videoId] === undefined);
-    });
 }

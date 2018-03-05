@@ -36,8 +36,11 @@ Keyboard shortcuts added by the extension:
 ![theater_mode](example_screenshots/uttv_theater.png)
 
 ## Change log  
+### 0.0.13  
+- Improve keyboard shortcut integration and remove parts of legacy code regaring buttons
+
 ### 0.0.11  
-- Add keyboard shortcuts to moodle.ut.ee videos (uttv/h5p).
+- Add keyboard shortcuts to moodle.ut.ee videos (uttv/h5p)
 
 ### 0.0.10  
 - Allows downloading (keyboard shortcut: d) and opening embedded view (keyboard shortcut: e) for some moodle and panopto videos.
