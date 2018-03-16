@@ -7,6 +7,7 @@ Available at  https://chrome.google.com/webstore/detail/uttv-extender/kagfmcikip
 
 ## Keyboard shortcuts  
 Keyboard shortcuts added by the extension:
+
 | Description                                | Key                          |
 |--------------------------------------------|------------------------------|
 | Change speed (playback rate)               |  `Up`/`Down`                 | 
