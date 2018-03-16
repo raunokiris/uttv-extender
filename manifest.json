@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "short_name": "uttvex",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "default_locale": "en",
   "description": "__MSG_extensionDescription__",
   
@@ -19,9 +19,9 @@
   
   "content_scripts": [ 
     {
-      "matches": ["*://www.uttv.ee/naita?id=*", "*://panopto.ut.ee/Panopto/Content/Sessions/*", "*://www.uttv.ee/embed?id=*", "*://h5p.org/h5p/embed/*"],
+      "matches": ["*://www.uttv.ee/naita?id=*", "*://panopto.ut.ee/Panopto/Content/Sessions/*", "*://www.uttv.ee/embed?id=*"],
       "js": ["js/content.js"],
-      "css": ["css/general.css"],
+      "css": ["css/uttv.css"],
       "all_frames": true
     },
     {
@@ -30,10 +30,18 @@
     },
     {
       "run_at": "document_end",
-      "matches": ["*://moodle.ut.ee/mod/page/view.php?id=*", "*://h5p.org/*"],
-      "js": ["js/moodle_handler.js"]
+      "matches": ["*://moodle.ut.ee/mod/page/view.php?id=*"],
+      "js": ["js/moodle_handler.js"],
+      "css": ["css/moodle.css"]
+    },
+
+    {
+      "matches": ["*://h5p.org/h5p/embed/*"],
+      "js": ["js/content.js"],
+      "css": ["css/h5p.css"],
+      "all_frames": true
     }
   ],
 
-"permissions": ["storage"]
+  "permissions": ["storage"]
 }

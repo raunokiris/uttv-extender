@@ -3,39 +3,41 @@
 ## Description
 Extension improves uttv.ee video player keyboard shortcut support and adds keyboard shortcuts to moodle.ut.ee videos. The extension also makes it easier to download videos from uttv, moodle and panopto for offline use (keyboard shortcut: 'd').
 
-Previous versions of the extension also added new buttons to the uttv.ee video player. After the introduction of the new uttv video player (videojs) in December 2017, this functionality became obsolete, as luckily the new player implemented most of the features added by the extension. 
-
 Available at  https://chrome.google.com/webstore/detail/uttv-extender/kagfmcikipgjelpkepfogjgfneoehimh  
 
 ## Keyboard shortcuts  
 Keyboard shortcuts added by the extension:
 - change speed (playback rate): up/down arrow keys
-- fast forward/backward: Shift + Left/Right arrow key (5min), Ctrl + Left/Right (60sec), Left/Right (10sec)
+- fast forward/backward:  
+-- Left/Right (10sec),
+-- Ctrl + Left/Right (60sec),    
+-- Shift + Left/Right arrow key (5min)
 - jump to X%: number keys 1-9 (e.g. key 5 jumps to 50% of the video)
 - play/pause: spacebar or single-click on video
 - full screen: f or double-click on video 
-- theater mode (uttv): t
+- theater mode (uttv, moodle): t
 - change volume: +/-
 - mute: m
 - save timestamp: s
-- load timestamp: l or c
-- download video: d
+- load timestamp: l
 - embed video: e
+- download video: d
+- copy video screen capture to clipboard: c
 
-## New buttons   (temporarily disabled)
+
+## New buttons (temporarily disabled)
+Previous versions of the extension also added new buttons to the uttv.ee video player. After the introduction of the new uttv video player (videojs) in December 2017, this functionality became obsolete, as luckily the new player implemented most of the features added by the extension. 
+
 - change video playback speed (1, 1.25, 1.5, 1.75)  
 - fast forward/backward (10s, 60s, 5min)  
 - save and load timestamp (enables the user to save a location in the video and return to it later, i.e. when returning to watch the video on another day)  
 - theater mode (makes video player larger)  
 
-## Screenshots
-### New buttons
-![new_buttons](example_screenshots/uttv_main.png)
-
-### Theater mode
-![theater_mode](example_screenshots/uttv_theater.png)
-
 ## Change log  
+### 0.0.14  
+- Added theater mode for videos embedded to moodle (shortcut 't')
+- Added functionality to copy video screen capture to clipboard (shortcut 'c').
+
 ### 0.0.13  
 - Improve keyboard shortcut integration and remove parts of legacy code regaring buttons
 

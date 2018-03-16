@@ -37,10 +37,6 @@ function videoPlayPause() {
     video.paused ? video.play() : video.pause();
 }
 
-// function videoSetPlaybackRate(value) {
-//     video.playbackRate = value;
-// }
-
 function videoIncrementPlaybackRate(value) {
     let new_playbackRate = video.playbackRate + value;
     if (new_playbackRate > 6) {
@@ -93,10 +89,13 @@ function videoToggleFullscreen() {
 
 function videoToggletheaterMode() {
     // Adds or removes class="theater"; see '.theater' css-rules in /css/general.css
+    console.log(currentHref);
     if (currentHref.includes("www.uttv.ee/naita?id=")) {
         document.getElementsByClassName('span4')[0].classList.toggle('theater');
         document.getElementsByClassName('span8')[0].classList.toggle('theater');
         document.getElementsByClassName('span12')[0].classList.toggle('theater');
+        video.classList.toggle('theater');
+    } else if (currentHref.includes("h5p.org")) {
         video.classList.toggle('theater');
     }
 }
@@ -127,50 +126,101 @@ function downloadFile(url) {
     anchor.click();
 }
 
+function copyVideoFrameToClipboard() {
+    // Copies the current frame of the video to clipboard. 
+    // Create the canvas and fill it's context with current video frame
+    let canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight; 
+    let ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    // Convert the canvas to Data URL and 
+    let dataURI = canvas.toDataURL('image/png'); // can also use 'image/jpeg'
+    
+    // To copy the image to clipboard, the image needs to be visible on the page
+    // (programmatic copying of images is not yet supported - see  https://w3c.github.io/clipboard-apis/ )
+    // To achieve this, create an <img> element and append it to a div.
+    let img = new Image;
+    img.crossOrigion = "Anonymous";
+    img.src = dataURI;
+    let div = document.createElement('div');
+    div.contentEditable = true;
+    div.appendChild(img);
+    
+    // Append the div to body (make the image visibile for copying), copy the visibile
+    // elements range and remove the div (remove the image).
+    document.body.appendChild(div); 
+    SelectText(div); // Copy visible range.
+    document.execCommand('Copy');
+    document.body.removeChild(div); 
+}
+
+function SelectText(element) {
+    // Select content to enable copying the selection to clipboard. 
+    // Input element should be a div containing the image/etc. 
+    // Source: https://stackoverflow.com/a/40547470
+    if (document.body.createTextRange) {
+        let range = document.body.createTextRange();
+        range.moveToElementText(element);
+        range.select();
+    } else if (window.getSelection) {
+        let selection = window.getSelection();
+        let range = document.createRange();
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+}
+
 function doc_keyUp(e) {
     // Get keycodes from: http://keycode.info/
     let targetElement = e.target.tagName.toLocaleLowerCase();
     if (targetElement !== "input" && targetElement !== "textarea" && !e.metaKey) {
     // Capture key presses only if they're made outside of search box (in that case user wants to input text)
     // AND when metaKey (Windows key; cmd-key) is not pressed (in that case user probably wants to use a global hotkey).
-        if (e.shiftKey && e.which === 39) {                  // Shift + ->: Long forward
+        if (e.ctrlKey && e.which === 67) {                   // Ctrl + c: Keep copy working
+            document.execCommand("Copy");
+        } else if (e.shiftKey && e.which === 39) {           // Shift + ->: Long forward
             videoIncrementCurrentTime(300);
-        } else if (e.ctrlKey && e.which === 39) {              // Ctrl + ->: Medium forward
+        } else if (e.ctrlKey && e.which === 39) {            // Ctrl + ->: Medium forward
             videoIncrementCurrentTime(60);
-        } else if (e.which === 39) {                          // ->: Small forward
+        } else if (e.which === 39) {                         // ->: Small forward
             videoIncrementCurrentTime(10);
-        } else if (e.shiftKey && e.which === 37) {            // Shift + <-: Long backward
+        } else if (e.shiftKey && e.which === 37) {           // Shift + <-: Long backward
             videoIncrementCurrentTime(-300);
         } else if (e.ctrlKey && e.which === 37) {            // Ctrl + <-: Medium backward
             videoIncrementCurrentTime(-60);
-        } else if (e.which === 37) {                        // <-: Small backward
+        } else if (e.which === 37) {                         // <-: Small backward
             videoIncrementCurrentTime(-10);
-        } else if (e.which >= 49 && e.which <= 57) {        // Number keys (1-9): Jump to % of video
+        } else if (e.which >= 49 && e.which <= 57) {         // Number keys (1-9): Jump to % of video
             videoSetPartialTime(e.which);
-        } else if (e.which === 32) {                        // Space: Play/pause
+        } else if (e.which === 32) {                         // Space: Play/pause
             videoPlayPause();
         } else if (e.which === 38) {                         // +: Increase speed by 0.25
             videoIncrementPlaybackRate(0.25); 
-        } else if (e.which === 40) {                        // -: Decrease speed by 0.25
+        } else if (e.which === 40) {                         // -: Decrease speed by 0.25
             videoIncrementPlaybackRate(-0.25);  
-        } else if (e.which === 107 || e.which === 187) {    // Up: Increase volume by 0.1
+        } else if (e.which === 107 || e.which === 187) {     // Up: Increase volume by 0.1
             videoIncrementVolume(0.1);  
-        } else if (e.which === 109 || e.which === 189) {    // Down: Decrease volume by 0.1
+        } else if (e.which === 109 || e.which === 189) {     // Down: Decrease volume by 0.1
             videoIncrementVolume(-0.1); 
-        } else if (e.which === 77) {                        // m: Toggle mute
+        } else if (e.which === 77) {                         // m: Toggle mute
             videoToggleMute();
-        } else if (e.which === 70) {                        // f: Toggle fullscreen
+        } else if (e.which === 70) {                         // f: Toggle fullscreen
             videoToggleFullscreen();
-        } else if (e.which === 84) {                        // t: Toggle theater mode (uttv)
+        } else if (e.which === 84) {                         // t: Toggle theater mode (uttv)
             videoToggletheaterMode();
-        } else if (e.which === 83) {                        // s: Save timestamp
+        } else if (e.which === 83) {                         // s: Save timestamp
             videoSaveTimestamp();
-        } else if (e.which === 76 || e.which === 67) {        // l/c: Load timestamp
+        } else if (e.which === 76) {                         // l: Load timestamp
             videoLoadTimestamp();
-        } else if (e.which === 68) {                        // d: Download video
+        } else if (e.which === 68) {                         // d: Download video
             downloadVideo();
-        } else if (e.which === 69) {                        // e: Open embed video
+        } else if (e.which === 69) {                         // e: Open embed video
             embedVideo();
+        } else if (e.which === 67) {                         // c: Copy frame to clipboard
+			copyVideoFrameToClipboard();
         }
     }
 }

@@ -1,0 +1,21 @@
+/* THEATER MODE */
+
+/* Move administration pane to bottom*/
+aside#block-region-side-pre.theater {
+	clear: both;
+	width: 100%;
+}
+
+/* Expand the element containing the iframe */
+section#region-main.theater {
+	float: none;
+	width: 100% !important;
+}
+
+/* Make size of the iframe responsive */
+iframe.theater {
+	width: 100% !important;
+    max-height: 85vh !important;
+    max-width: 100% !important;
+    height: -webkit-fill-available;  /*eemalda */
+}
