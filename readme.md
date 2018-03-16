@@ -7,22 +7,26 @@ Available at  https://chrome.google.com/webstore/detail/uttv-extender/kagfmcikip
 
 ## Keyboard shortcuts  
 Keyboard shortcuts added by the extension:
-- change speed (playback rate): up/down arrow keys
-- fast forward/backward:  
--- Left/Right (10sec),
--- Ctrl + Left/Right (60sec),    
--- Shift + Left/Right arrow key (5min)
-- jump to X%: number keys 1-9 (e.g. key 5 jumps to 50% of the video)
-- play/pause: spacebar or single-click on video
-- full screen: f or double-click on video 
-- theater mode (uttv, moodle): t
-- change volume: +/-
-- mute: m
-- save timestamp: s
-- load timestamp: l
-- embed video: e
-- download video: d
-- copy video screen capture to clipboard: c
+| Description                                | Key                          |
+|--------------------------------------------|------------------------------|
+| Change speed (playback rate)               |  `Up`/`Down`                 | 
+| Fast forward/backward                      |                              |
+|   -- 10 sec                                | `Right`/`Left`               |
+|   -- 60 sec                                | `Ctrl` + `Right`/`Left`      |
+|   -- 5 min                                 | `Shift` + `Right`/`Left`     |
+| Jump to X%, *e.g.*                         | number keys `1`-`9`          |
+| -- jump to 30% of the video                | `3`                          |
+| -- jump to 70% of the video                | `7`                          |
+| **P**lay/pause                             | `Spacebar` or `single-click` |
+| **F**ull screen                            | `F` or `double-click`        |
+| **T**heater mode (uttv, moodle)            | `T`                          | 
+| Change volume                              | `+`/`-`                      |
+| **M**ute                                   | `M`                          |
+| **S**ave timestamp                         | `S`                          |
+| **L**oad timestamp                         | `L`                          |
+| **E**mbed video                            | `E`                          |
+| **D**ownload video                         | `D`                          |
+| **C**opy video screen capture to clipboard | `C`                          |
 
 
 ## New buttons (temporarily disabled)
@@ -47,7 +51,7 @@ Previous versions of the extension also added new buttons to the uttv.ee video p
 ### 0.0.10  
 - Allows downloading (keyboard shortcut: d) and opening embedded view (keyboard shortcut: e) for some moodle and panopto videos.
 
-### 0.0.9 (29 December 2017)  
+### 0.0.9  
 - Add partial support (keyboard shortcuts) to new UTTV video player (videojs)
 
 ### 0.0.7  
